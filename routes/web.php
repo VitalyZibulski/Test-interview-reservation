@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/activities/{activity}', [ActivityController::class, 'show'])->name('activity.show');
     Route::post('/activities/{activity}/register', [ActivityRegisterController::class, 'store'])->name('activities.register');
     Route::get('/activities', [MyActivityController::class, 'show'])->name('my-activity.show');
+    Route::delete('/activities/{activity}', [MyActivityController::class, 'destroy'])->name('my-activity.destroy');
 });
 
 require __DIR__.'/auth.php';
