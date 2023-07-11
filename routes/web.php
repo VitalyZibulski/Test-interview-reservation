@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ActivityRegisterController;
 use App\Http\Controllers\CompanyActivityController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyGuideController;
 use App\Http\Controllers\CompanyUserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MyActivityController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('companies.guides', CompanyGuideController::class)->except('show');
     Route::resource('companies.activities', CompanyActivityController::class);
     Route::get('/activities/{activity}', [ActivityController::class, 'show'])->name('activity.show');
+    Route::post('/activities/{activity}/register', [ActivityRegisterController::class, 'store'])->name('activities.register');
+    Route::get('/activities', [MyActivityController::class, 'show'])->name('my-activity.show');
 });
 
 require __DIR__.'/auth.php';
