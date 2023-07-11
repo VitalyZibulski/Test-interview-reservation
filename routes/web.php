@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/activities/{activity}/register', [ActivityRegisterController::class, 'store'])->name('activities.register');
     Route::get('/activities', [MyActivityController::class, 'show'])->name('my-activity.show');
     Route::get('/guides/activities', [GuideActivityController::class, 'show'])->name('guide-activity.show');
+    Route::get('/guides/activities/{activity}/pdf', [GuideActivityController::class, 'export'])->name('guide-activity.export');
     Route::delete('/activities/{activity}', [MyActivityController::class, 'destroy'])->name('my-activity.destroy');
 });
 
